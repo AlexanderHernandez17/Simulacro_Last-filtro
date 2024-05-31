@@ -1,4 +1,5 @@
 import { Book } from 'src/book/entities/book.entity';
+import { Client } from 'src/client/entities/client.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 
@@ -10,8 +11,8 @@ export class Sale {
   @ManyToOne(() => Book)
   book: Book;
 
-  @Column()
-  client: string;
+  @ManyToOne(() => Client, (client) => client.sales)
+  client: Client;
 
   @Column()
   saleDate: Date;
