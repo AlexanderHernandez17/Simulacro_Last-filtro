@@ -21,16 +21,16 @@ export class BookService {
     return this.bookRepository.find();
   }
 
-  async findOne(id: number): Promise<Book> {
-    return this.bookRepository.findOne(id);
+  async findOne(id: string): Promise<Book> {
+    return this.bookRepository.findOne({ where: { id } });
   }
 
-  async update(id: number, updateBookDto: UpdateBookDto): Promise<Book> {
+  async update(id: string, updateBookDto: UpdateBookDto): Promise<Book> {
     await this.bookRepository.update(id, updateBookDto);
-    return this.bookRepository.findOne(id);
+    return this.bookRepository.findOne({ where: { id } });
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: string): Promise<void> {
     await this.bookRepository.delete(id);
   }
 }
