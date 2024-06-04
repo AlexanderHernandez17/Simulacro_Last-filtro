@@ -16,7 +16,7 @@ export class SeedService {
     private readonly clientRepository: Repository<Client>,
   ) {}
 
-  async seed() {
+  async run() {
     await this.createAuthors();
     await this.createBooks();
     await this.createClients();

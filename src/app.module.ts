@@ -7,6 +7,7 @@ import { ClientModule } from "./client/client.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { SeedsModule } from "./seeds/seeds.module";
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
       synchronize: true,
       "ssl": true
     }),
-    AuthorModule, BookModule, SaleModule, ClientModule],
+    AuthorModule, BookModule, SaleModule, ClientModule, SeedsModule],
   controllers: [AppController],
   providers: [AppService],
 })

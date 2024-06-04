@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { SeedService } from './seeds/seeds/seeds.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,9 +11,6 @@ async function bootstrap() {
   .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-
-  const seedService = app.get(SeedService);
-  await seedService.seed();
   
   await app.listen(3000);
   console.log('App listening at localhost:3000');
